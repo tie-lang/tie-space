@@ -1,6 +1,6 @@
 type tie<logic>
 // ch11_unsafe.tie —— 规范正文 · 第 11 章 不安全机制
-import "F:/Projects/tie-repo/tofflib/spec/pdfdoc.tie" as dp
+import "F:/Projects/tie-repo/tie-spec/source/20262/pdfdoc.tie" as dp
 
 namespace ch11 {
 

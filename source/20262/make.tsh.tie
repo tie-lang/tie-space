@@ -1,10 +1,10 @@
 type tie<tsh>
-// spec/make.tsh.tie —— 《tie 语言语法规范 2026.2》构建脚本（tshell）
+// source/20262/make.tsh.tie —— 《tie 语言语法规范 2026.2》构建脚本（tshell）
 // ============================================================
-// 用法（在 tofflib 仓库根执行）：
-//     <tsh> -f spec/make.tsh.tie [tiec路径]
+// 用法（在 tie-spec 仓库根执行）：
+//     <tsh> -f source/20262/make.tsh.tie [tiec路径]
 //
-// 职责：① 编译 spec/build.tie ② 运行生成 PDF（内含结构自检）
+// 职责：① 编译 build.tie ② 运行生成 PDF（内含结构自检）
 //       ③ 报告产物大小与自检结论，据此设置退出码。
 //
 // 两点工程约定（均为实测所得，非风格偏好）：
@@ -14,11 +14,14 @@ type tie<tsh>
 //     而构建脚本的输出是要给人看的，故此处不用中文。
 
 var root = cwd()
-var spec = "F:\\Projects\\tie-repo\\tofflib\\spec"
+// 规范源码现仅存于本仓库（tofflib/spec 已于 2026-09-29 移除，tie-spec 成为唯一来源）。
+var spec = "F:\\Projects\\tie-repo\\tie-spec\\source\\20262"
+// 产物落点 = 仓库根（与既有 tie-20262.pdf / tie.pdf 同址）。
+var outdir = "F:\\Projects\\tie-repo\\tie-spec"
 if !file_exists(spec + "\\build.tie") {
-    // 退化路径：假设从 tofflib 根运行
-    if file_exists(root + "\\spec\\build.tie") {
-        spec = root + "\\spec"
+    // 退化路径：直接在源码目录内运行（root 即 source/20262）
+    if file_exists(root + "\\build.tie") {
+        spec = root
     }
 }
 
@@ -75,14 +78,17 @@ println("[2/2] generating PDF (with self-check) ...")
 var rc = exec_code(exe)
 sleep_ms(2000)
 
-var pdf = spec + "\\tie-spec-2026.pdf"
+// 产物在仓库根：tie-20262.pdf（版本化名）
+var pdf = outdir + "\\tie-20262.pdf"
 if !file_exists(pdf) {
     println("no PDF produced (run exit " + to_string(rc) + ")")
     exit(1)
 }
+// tie.pdf 为「最新」别名：与版本化名保持同一份内容
+exec_code("cmd /c copy /Y \"" + pdf + "\" \"" + outdir + "\\tie.pdf\"")
 var sz = 0   // tshell 无 file_size；大小由 build.exe 的自检输出与外部工具报告
 println("")
-println("artifact: tie-spec-2026.pdf")
+println("artifact: tie-20262.pdf (tie.pdf refreshed as the latest alias)")
 println("selfcheck: see the verify line above (OK = every xref offset is aligned)")
 
 if rc != 0 {

@@ -1,6 +1,6 @@
 type tie<logic>
 // ch04_stmt.tie —— 规范正文 · 第 4 章 语句
-import "F:/Projects/tie-repo/tofflib/spec/pdfdoc.tie" as dp
+import "F:/Projects/tie-repo/tie-spec/source/20262/pdfdoc.tie" as dp
 
 namespace ch04 {
 

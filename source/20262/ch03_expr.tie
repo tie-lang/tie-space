@@ -1,6 +1,6 @@
 type tie<logic>
 // ch03_expr.tie —— 规范正文 · 第 3 章 运算符与表达式
-import "F:/Projects/tie-repo/tofflib/spec/pdfdoc.tie" as dp
+import "F:/Projects/tie-repo/tie-spec/source/20262/pdfdoc.tie" as dp
 
 namespace ch03 {
 

@@ -1,6 +1,6 @@
 type tie<logic>
 // ch16_ref.tie —— 规范正文 · 第 16 章 速查表
-import "F:/Projects/tie-repo/tofflib/spec/pdfdoc.tie" as dp
+import "F:/Projects/tie-repo/tie-spec/source/20262/pdfdoc.tie" as dp
 
 namespace ch16 {
 
