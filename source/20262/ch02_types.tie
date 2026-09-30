@@ -141,7 +141,7 @@ pub func chapter() {
     table_push(h4, "类型")
     table_push(h4, "说明")
     var r4: table<table<string>> = []
-    table_push(r4, dp.kvrow("ptr<T>", "裸指针。指向 T 的地址，可参与算术与解引用，只在不安全上下文中可用。"))
+    table_push(r4, dp.kvrow("ptr<T>", "裸指针。指向 T 的地址。类型与其值的声明、比较、传递在安全代码中即可用；解引用与算术须不安全上下文（见 11.8）。"))
     table_push(r4, dp.kvrow("slice<T>", "切片。指向一段连续元素视图，共享底层数据而不复制。"))
     table_push(r4, dp.kvrow("atomic<T>", "原子类型。提供原子读写与比较交换，用于跨执行流的无锁同步。"))
     table_push(r4, dp.kvrow("guard<cap>", "凭据。只能转移、不能复制的许可票据，cap 取值见第 11 章。"))
