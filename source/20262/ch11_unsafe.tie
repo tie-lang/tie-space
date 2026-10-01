@@ -49,7 +49,7 @@ pub func chapter() {
     table_push(h2, "覆盖的不安全操作")
     var r2: table<table<string>> = []
     table_push(r2, dp.kvrow("mem", "解引用、指针算术、原始分配与释放、取地址。"))
-    table_push(r2, dp.kvrow("ext", "调用语言无法核对的外部代码——自行声明的外部函数、交给外部的函数指针、动态装载的代码。系统调用与常用库已由语言封装为安全接口，不需凭据。"))
+    table_push(r2, dp.kvrow("ext", "调用语言无法核对的外部代码——自行声明的外部函数、交给外部的函数指针、动态装载的库与按地址调用的函数。系统调用与常用库已由语言封装为安全接口，不需凭据。"))
     table_push(r2, dp.kvrow("share", "跨执行流共享可变数据，越过「默认不共享可变状态」的前提。"))
     table_push(r2, dp.kvrow("raw", "内联汇编、易失访存、非结构化跳转——直接绕过编译器对代码的假设。"))
     table_push(r2, dp.kvrow("lock", "对容器的访问去掉运行时锁——越过「并发访问由运行时看护」的前提，正确性由书写者担责。"))
